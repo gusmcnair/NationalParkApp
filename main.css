@@ -1,0 +1,14 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  #submit-button {
+    display: block;
+  }
+  
+  #state-names {
+    width: 250px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
