@@ -25,7 +25,7 @@ function getParks(stateNames){
     }};
     let params2 = encodeURIComponent(params);
   console.log("https://developer.nps.gov/api/v1/parks?stateCode=" + params, options);
-  fetch("https://developer.nps.gov/api/v1/parks?stateCode=" + params2, options)
+  fetch("https://cors-anywhere.herokuapp.com/https://developer.nps.gov/api/v1/parks?stateCode=" + params2, options)
      .then(response => {
       if (response.ok) {
         return response.json();
