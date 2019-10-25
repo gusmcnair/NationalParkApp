@@ -24,9 +24,9 @@ function getParks(stateNames){
       params += stateNames[i];
       params += ",";
     }};
-    let webAddress = encodeURIComponent("https://developer.nps.gov/api/v1/parks?stateCode=" + params);
+    let params2 = encodeURIComponent(params);
     console.log(webAddress);
-  fetch(options + webAddress)
+  fetch(options + "https://developer.nps.gov/api/v1/parks?stateCode=" + params)
     .then(response => {
       if (response.ok){
         return response.json();
