@@ -4,7 +4,6 @@ function watchForm(){
   $("form").submit(event => {
     event.preventDefault();
     const stateNames = $("#state-names").val().split(" ");
-    console.log(typeof(stateNames[1]));
     getParks(stateNames);
     $("#state-names").val("");
   });
@@ -25,18 +24,23 @@ function getParks(stateNames){
       params += ",";
     }};
     let params2 = encodeURIComponent(params);
-    console.log(webAddress);
-  fetch(options + "https://developer.nps.gov/api/v1/parks?stateCode=" + params)
-    .then(response => {
-      if (response.ok){
+  console.log("https://developer.nps.gov/api/v1/parks?stateCode=" + params, options);
+  fetch("https://developer.nps.gov/api/v1/parks?stateCode=" + params2, options)
+     .then(response => {
+      if (response.ok) {
         return response.json();
-      } throw new Error(response.statusText);
-      })
-    .then(responseJson => displayResults(responseJson, username))
-    .catch(err => {
-      alert("Fuck, this sucks, dude.")
+      }
+      throw new Error(response.statusText);
     })
-    }
+    .then(responseJson => console.log(responseJson))
+        .catch(err => {
+      alert("Unfortunately, this didn't work.")
+    });
+}
+
+function displayResults(responseJson){
+  console.log(responseJson);
+}
 
 
 watchForm();
