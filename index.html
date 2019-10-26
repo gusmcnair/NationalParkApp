@@ -11,7 +11,10 @@
       <h1>National Parks App</h1>
       <form>
         <label for="state-names">Please enter state name(s) separated by a space.</label>
-        <input name="state-names" id="state-names" type="text" placeholder="WI IL">
+        <input name="state-names" id="state-names" type="text" placeholder="WI IL" required>
+        <br><br>
+        <label for="max-results">Maximum number of results:</label>
+        <input name="max-results" id="max-results" type="number" placeholder="10" max="50" min="0">
         <button name="submit-button" id="submit-button" type="submit">Submit</button>
       </form>
       <section class="national-park-list"></section>
