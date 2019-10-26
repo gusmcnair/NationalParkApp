@@ -51,38 +51,9 @@ function displayResults(responseJson) {
   $(".national-park-list").empty();
   for (i = 0; i < responseJson.data.length; i++) {
     $(".national-park-list").append(`<p class="nat-park-name">${responseJson.data[i].name}</p><p>${responseJson.data[i].description}</p><p><a href="${responseJson.data[i].url}" target="_blank">${responseJson.data[i].url}</a></p><hr>`);
-    if (responseJson.data[i].latLong != "") {
-      $(".national-park-list").append(`<p class="steven"></p>`)
-      //getParkAddress(responseJson.data[i].latLong);
     };
   }
-}
 
-/*
-function getParkAddress(latlong){
-  let latlongformat = "latlng=" + latlong.replace(/lat:|\slong:/g, "")
-  console.log("https://maps.googleapis.com/maps/api/geocode/json?" + latlongformat + "&key=AIzaSyAbOJBsHu8NRJnwsjAK_UONAWnDd2eh6LA")
-  fetch("https://maps.googleapis.com/maps/api/geocode/json?" + latlongformat + "&key=AIzaSyAbOJBsHu8NRJnwsjAK_UONAWnDd2eh6LA")
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    }
-    throw new Error(response.statusText);
-  })
-  .then(responseJson => formatAddress(responseJson))
-  .catch(err => {
-    alert("Unfortunately, this didn't work.")
-  })
-};
 
-function formatAddress(responseJson) {
-  console.log(responseJson.results[0].formatted_address)
-  console.log($(".steven").length);
-  //let parkAddress = `Address: ${responseJson.results[0].formatted_address}`
-  //for (i = 0; i < $(".steven").length; i ++){
-   // $(".steven").append(`<p>${parkAddress}</p>`);
-  }
-
-*/
 
 watchForm();
