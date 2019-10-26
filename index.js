@@ -32,8 +32,8 @@ function getParks(stateNames, maxResults) {
     }
   };
   let params = encodeURIComponent(stateString);
-  console.log("https://cors-anywhere.herokuapp.com/https://developer.nps.gov/api/v1/parks?stateCode=" + params + "&limit=" + maxResults, options)
-  fetch("https://cors-anywhere.herokuapp.com/https://developer.nps.gov/api/v1/parks?stateCode=" + params + "&limit=" + maxResults, options)
+  console.log("https://cors-anywhere.herokuapp.com/https://developer.nps.gov/api/v1/parks?stateCode=" + params + "&limit=" + maxResults + "&fields=addresses", options)
+  fetch("https://cors-anywhere.herokuapp.com/https://developer.nps.gov/api/v1/parks?stateCode=" + params + "&limit=" + maxResults + "&fields=addresses", options)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -50,7 +50,7 @@ function displayResults(responseJson) {
   console.log(responseJson);
   $(".national-park-list").empty();
   for (i = 0; i < responseJson.data.length; i++) {
-    $(".national-park-list").append(`<p class="nat-park-name">${responseJson.data[i].name}</p><p>${responseJson.data[i].description}</p><p><a href="${responseJson.data[i].url}" target="_blank">${responseJson.data[i].url}</a></p><hr>`);
+    $(".national-park-list").append(`<p class="nat-park-name">${responseJson.data[i].name}</p><p>${responseJson.data[i].description}</p><p>${responseJson.data[i].addresses[1].line1} ${responseJson.data[i].addresses[1].line2} ${responseJson.data[i].addresses[1].line3 }<br>${responseJson.data[i].addresses[1].city}, ${responseJson.data[i].addresses[1].stateCode} ${responseJson.data[i].addresses[1].postalCode}</p><p><a href="${responseJson.data[i].url}" target="_blank">${responseJson.data[i].url}</a></p><hr>`);
     };
   }
 
